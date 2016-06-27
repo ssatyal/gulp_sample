@@ -1,5 +1,6 @@
-var gulp = require('gulp');
+var gulp = require('gulp'),
+    gutil = require('gulp-util');
 
 gulp.task('default', function(){
-  //default task here
+  return gutil.log('Gulp is running!')
 })

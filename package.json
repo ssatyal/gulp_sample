@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ssatyal/gulp_sample#readme",
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7"
   }
 }

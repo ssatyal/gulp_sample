@@ -24,6 +24,6 @@ gulp.task('build-css', function(){
 
 //configure which files to watch and what tasks to use on file changes
 gulp.task('watch', function() {
-  gulp.watch('source/javascript/**/*.js', [jshint]);
-  gulp.watch('source/scss/**/*scss', [build-css]);
+  gulp.watch('source/javascript/**/*.js', ['jshint']);
+  gulp.watch('source/scss/**/*scss', ['build-css']);
 });

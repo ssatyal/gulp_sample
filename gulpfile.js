@@ -2,7 +2,9 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     jshint = require('gulp-jshint'),
     sass = require('gulp-sass'),
-    sourcemaps = require('gulp-sourcemaps');
+    sourcemaps = require('gulp-sourcemaps'),
+    postcss = require('gulp-postcss'),
+    autoprefixer = require('gulp-autoprefixer');
 
 //defines default task and add the watch task to it
 gulp.task('default', ['watch']);
@@ -18,6 +20,7 @@ gulp.task('build-css', function(){
   return gulp.src('source/scss/**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass())
+    .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('public/assets/stylesheets'));
 });

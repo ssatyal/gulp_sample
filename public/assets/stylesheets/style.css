@@ -1,4 +1,8 @@
 body {
-  background-color: #000000; }
+  opacity: .5;
+  box-sizing: border-box;
+  transform: scale(0.5);
+  display: -ms-flexbox;
+  display: flex; }
 
 /*# sourceMappingURL=style.css.map */

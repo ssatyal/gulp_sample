@@ -1,7 +1,8 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     jshint = require('gulp-jshint'),
-    sass = require('gulp-sass');
+    sass = require('gulp-sass'),
+    sourcemaps = require('gulp-sourcemaps');
 
 //defines default task and add the watch task to it
 gulp.task('default', ['watch']);
@@ -15,7 +16,9 @@ gulp.task('jshint', function(){
 
 gulp.task('build-css', function(){
   return gulp.src('source/scss/**/*.scss')
+    .pipe(sourcemaps.init())
     .pipe(sass())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('public/assets/stylesheets'));
 });
 

@@ -4,4 +4,8 @@
 ### Scripts
 - jshint
 
-###css
+###CSS
+- sass
+- sourcemaps
+- postcss
+- autoprefixer

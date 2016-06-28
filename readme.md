@@ -3,6 +3,7 @@
 ##plug-ins
 ### Scripts
 - jshint
+- gulp-uglify
 
 ###CSS
 - sass

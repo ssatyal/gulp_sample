@@ -5,10 +5,12 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     postcss = require('gulp-postcss'),
     autoprefixer = require('gulp-autoprefixer'),
-    connect = require('gulp-connect');
+    connect = require('gulp-connect'),
+    uglify = require('gulp-uglify'),
+    pump = require('pump');
 
 //defines default task and add the watch task to it
-gulp.task('default', ['watch', 'connect']);
+gulp.task('default', ['watch', 'connect', 'compress']);
 
 //configure jshint task
 gulp.task('jshint', function(){
@@ -34,8 +36,18 @@ gulp.task('connect', function() {
   })
 });
 
+gulp.task('compress', function (cb) {
+  pump([
+        gulp.src('source/javascript/*.js'),
+        uglify(),
+        gulp.dest('public/assets/javascript')
+    ],
+    cb
+  );
+});
+
 //configure which files to watch and what tasks to use on file changes
 gulp.task('watch', function() {
-  gulp.watch('source/javascript/**/*.js', ['jshint']);
+  gulp.watch('source/javascript/**/*.js', ['jshint', 'compress']);
   gulp.watch('source/scss/**/*scss', ['build-css']);
 });

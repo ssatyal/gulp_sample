@@ -4,10 +4,11 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
     postcss = require('gulp-postcss'),
-    autoprefixer = require('gulp-autoprefixer');
+    autoprefixer = require('gulp-autoprefixer'),
+    connect = require('gulp-connect');
 
 //defines default task and add the watch task to it
-gulp.task('default', ['watch']);
+gulp.task('default', ['watch', 'browser-sync']);
 
 //configure jshint task
 gulp.task('jshint', function(){
@@ -23,6 +24,13 @@ gulp.task('build-css', function(){
     .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('public/assets/stylesheets'));
+});
+
+
+gulp.task('connect', function() {
+  connect.server({
+    livereload: true
+  })
 });
 
 //configure which files to watch and what tasks to use on file changes

@@ -5,4 +5,7 @@ body {
   display: -ms-flexbox;
   display: flex; }
 
+h1 {
+  color: red; }
+
 /*# sourceMappingURL=style.css.map */

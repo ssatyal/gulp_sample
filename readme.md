@@ -9,3 +9,4 @@
 - sourcemaps
 - postcss
 - autoprefixer
+- connect for livereload

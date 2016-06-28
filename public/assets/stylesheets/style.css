@@ -1,11 +1,8 @@
 body {
-  opacity: .5;
-  box-sizing: border-box;
-  transform: scale(0.5);
   display: -ms-flexbox;
   display: flex; }
 
 h1 {
-  color: green; }
+  color: red; }
 
 /*# sourceMappingURL=style.css.map */

@@ -4,6 +4,7 @@
 ### Scripts
 - jshint
 - gulp-uglify
+- gulp-babel
 
 ###CSS
 - sass

@@ -7,10 +7,11 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     connect = require('gulp-connect'),
     uglify = require('gulp-uglify'),
-    pump = require('pump');
+    pump = require('pump'),
+    babel = require('gulp-babel');
 
 //defines default task and add the watch task to it
-gulp.task('default', ['watch', 'connect', 'compress']);
+gulp.task('default', ['watch', 'connect', 'babelize', 'compress']);
 
 //configure jshint task
 gulp.task('jshint', function(){
@@ -29,6 +30,15 @@ gulp.task('build-css', function(){
     .pipe(connect.reload());
 });
 
+gulp.task('babelize', function(){
+  return gulp.src('source/javascript/babel.js')
+    .pipe(babel({
+      presets: ['es2015']
+    }))
+    .pipe(gulp.dest('source/javascript/export'));
+    compress();
+});
+
 
 gulp.task('connect', function() {
   connect.server({
@@ -38,7 +48,7 @@ gulp.task('connect', function() {
 
 gulp.task('compress', function (cb) {
   pump([
-        gulp.src('source/javascript/*.js'),
+        gulp.src('source/javascript/export/*.js'),
         uglify(),
         gulp.dest('public/assets/javascript')
     ],
@@ -48,6 +58,8 @@ gulp.task('compress', function (cb) {
 
 //configure which files to watch and what tasks to use on file changes
 gulp.task('watch', function() {
-  gulp.watch('source/javascript/**/*.js', ['jshint', 'compress']);
+  gulp.watch('source/javascript/export/*.js', ['jshint']);
   gulp.watch('source/scss/**/*scss', ['build-css']);
+  gulp.watch('source/javascript/babel.js', ['babelize']);
+  gulp.watch('source/javascript/export/babel.js', ['compress']);
 });

@@ -8,7 +8,7 @@ var gulp = require('gulp'),
     connect = require('gulp-connect');
 
 //defines default task and add the watch task to it
-gulp.task('default', ['watch', 'browser-sync']);
+gulp.task('default', ['watch', 'connect']);
 
 //configure jshint task
 gulp.task('jshint', function(){
@@ -23,7 +23,8 @@ gulp.task('build-css', function(){
     .pipe(sass())
     .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('public/assets/stylesheets'));
+    .pipe(gulp.dest('public/assets/stylesheets'))
+    .pipe(connect.reload());
 });
 
 
